@@ -31,4 +31,21 @@ public class Hero extends LivingThing{
             System.out.printf("勇者%sは道半ばで力尽きてしまった。\n", getName());
         }
     }
+    public void attack (LivingThing opponent){
+        if (!isDead()){
+            int damage = (int) (Math.random() * getAttack());
+            if (damage==0){
+                System.out.printf("%sの攻撃！,,,だが、%sは攻撃を回避した！\n", getName(), opponent.getName());
+            }else{
+                if((( int ) ( Math . random () * 100 )<40)){
+                    damage *= 2;
+                    System.out.printf("%sの攻撃！会心の一撃！！%sに%dのダメージを与えた！！\n", getName(), opponent.getName(), damage);
+                    opponent.wounded(damage);
+                }else{
+                    System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", getName(), opponent.getName(), damage);
+                    opponent.wounded(damage);
+                }
+            }
+        }
+    }
 }
